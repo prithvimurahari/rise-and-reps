@@ -1,0 +1,37 @@
+---
+interface Exercise {
+  name: string;
+  sets: number;
+  reps: string;
+  rest: string;
+}
+
+interface Props {
+  exercises: Exercise[];
+}
+
+const { exercises } = Astro.props;
+---
+
+<div class="overflow-x-auto">
+  <table class="w-full text-sm">
+    <thead>
+      <tr class="border-b border-border text-left text-text-secondary">
+        <th class="pb-3 pr-4 font-medium">Exercise</th>
+        <th class="pb-3 pr-4 font-medium">Sets</th>
+        <th class="pb-3 pr-4 font-medium">Reps</th>
+        <th class="pb-3 font-medium">Rest</th>
+      </tr>
+    </thead>
+    <tbody>
+      {exercises.map((ex, i) => (
+        <tr class:list={["border-b border-border/50", i % 2 === 0 ? "bg-bg-card/50" : ""]}>
+          <td class="py-3 pr-4 font-medium text-text-primary">{ex.name}</td>
+          <td class="py-3 pr-4 text-text-secondary">{ex.sets}</td>
+          <td class="py-3 pr-4 text-accent font-medium">{ex.reps}</td>
+          <td class="py-3 text-text-secondary">{ex.rest}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
