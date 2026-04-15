@@ -1,0 +1,35 @@
+---
+import Badge from "./Badge.astro";
+
+interface Props {
+  title: string;
+  goal: string;
+  calories: number;
+  macros: { protein: number; carbs: number; fat: number };
+  slug: string;
+}
+
+const { title, goal, calories, macros, slug } = Astro.props;
+---
+
+<a
+  href={`/diets/${slug}`}
+  class="block bg-bg-card border border-border rounded-xl p-6 transition-all hover:bg-bg-card-hover hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 group"
+>
+  <div class="flex items-start justify-between mb-3">
+    <h3 class="text-lg font-bold text-text-primary group-hover:text-accent transition-colors">
+      {title}
+    </h3>
+    <Badge label={`${calories} cal`} />
+  </div>
+
+  <div class="mb-4">
+    <Badge label={goal.replace("-", " ")} variant="accent" />
+  </div>
+
+  <div class="flex gap-4 text-xs text-text-secondary">
+    <span>P: <span class="text-text-primary font-medium">{macros.protein}g</span></span>
+    <span>C: <span class="text-text-primary font-medium">{macros.carbs}g</span></span>
+    <span>F: <span class="text-text-primary font-medium">{macros.fat}g</span></span>
+  </div>
+</a>

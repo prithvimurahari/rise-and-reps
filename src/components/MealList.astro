@@ -1,0 +1,32 @@
+---
+interface Meal {
+  name: string;
+  items: string[];
+  calories: number;
+}
+
+interface Props {
+  meals: Meal[];
+}
+
+const { meals } = Astro.props;
+---
+
+<div class="space-y-4">
+  {meals.map((meal) => (
+    <div class="bg-bg-card border border-border rounded-lg p-4">
+      <div class="flex justify-between items-center mb-2">
+        <h4 class="font-semibold text-text-primary">{meal.name}</h4>
+        <span class="text-sm text-accent font-medium">{meal.calories} cal</span>
+      </div>
+      <ul class="space-y-1">
+        {meal.items.map((item) => (
+          <li class="text-sm text-text-secondary flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-accent/50"></span>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</div>
