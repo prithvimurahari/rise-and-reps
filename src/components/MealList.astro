@@ -19,13 +19,13 @@ const { meals } = Astro.props;
     <div class="border-b border-border py-6 first:pt-0 last:border-b-0 group">
       <div class="flex items-start justify-between mb-3">
         <div class="flex items-center gap-3">
-          <span class="font-display text-xs font-700 text-text-muted">{String(i + 1).padStart(2, '0')}</span>
+          <span class="font-display text-xs font-bold text-text-muted">{String(i + 1).padStart(2, '0')}</span>
           <Icon name="lucide:clock" class="w-3.5 h-3.5 text-text-muted/40" />
-          <h4 class="font-display text-base font-700 tracking-tight text-text-primary">{meal.name}</h4>
+          <h4 class="font-display text-base font-bold tracking-tight text-text-primary">{meal.name}</h4>
         </div>
         <div class="flex items-center gap-1.5">
           <Icon name="lucide:flame" class="w-3.5 h-3.5 text-accent" />
-          <span class="font-display text-sm font-700 text-accent">{meal.calories} cal</span>
+          <span class="font-display text-sm font-bold text-accent">{meal.calories} cal</span>
         </div>
       </div>
       <div class="pl-[4.5rem] flex flex-wrap gap-x-4 gap-y-1">

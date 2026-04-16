@@ -36,10 +36,11 @@ Collections use `glob` loader pattern. Content queried via `getCollection()` and
 
 ### Layout & Styling
 
-- `BaseLayout.astro` wraps all pages: meta tags, Inter font, ViewTransitions, Header/Footer
+- `BaseLayout.astro` wraps all pages: meta tags, Syne + DM Sans fonts, ViewTransitions, Header/Footer
 - **Tailwind CSS 4** via `@tailwindcss/vite` plugin (not the PostCSS integration)
 - Custom theme tokens in `src/styles/global.css` under `@theme` — use `bg-bg-primary`, `text-text-secondary`, `text-accent`, `border-border`, etc. instead of raw colors
-- Dark theme only — background `#0a0a0a`, accent green `#22c55e`
+- Dark theme only — background `#050505`, accent chartreuse `#CCFF00`
+- Fonts: `font-display` (Syne) for headings, `font-body` (DM Sans) for body text
 
 ### Key Patterns
 
@@ -47,7 +48,7 @@ Collections use `glob` loader pattern. Content queried via `getCollection()` and
 - Cards (WorkoutCard, DietCard) link to detail pages using collection entry `id` as slug
 - `Badge` component has `variant="accent"` for highlighted labels
 - Mobile nav uses vanilla JS toggle (script tag in Header.astro)
-- Icons via `astro-icon` + `@iconify-json/lucide` (available but not yet used in components)
+- Icons via `astro-icon` + `@iconify-json/lucide` — used in WorkoutCard, DietCard, ExerciseTable, MealList
 
 ## Design Spec & Implementation Plan
 

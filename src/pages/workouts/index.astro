@@ -4,6 +4,12 @@ import WorkoutCard from "../../components/WorkoutCard.astro";
 import { getCollection } from "astro:content";
 
 const workouts = await getCollection("workouts");
+const dayOrder = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+workouts.sort((a, b) => {
+  const aDay = dayOrder.findIndex(d => a.id.startsWith(d));
+  const bDay = dayOrder.findIndex(d => b.id.startsWith(d));
+  return aDay - bDay;
+});
 ---
 
 <BaseLayout title="Workouts" description="Browse all workout routines">
@@ -11,7 +17,7 @@ const workouts = await getCollection("workouts");
     <div class="max-w-7xl mx-auto">
       <div class="mb-14 animate-fade-up">
         <p class="text-[10px] tracking-[0.3em] uppercase text-text-muted mb-3">Training Programs</p>
-        <h1 class="font-display text-4xl md:text-6xl font-800 tracking-tight mb-3">Workouts</h1>
+        <h1 class="font-display text-4xl md:text-6xl font-extrabold tracking-tight mb-3">Workouts</h1>
         <div class="h-px bg-accent w-16 animate-reveal-line delay-2"></div>
       </div>
 

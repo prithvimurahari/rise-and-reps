@@ -15,8 +15,8 @@
   --color-text-muted: #3a3a3a;
   --color-border: #1a1a1a;
   --color-border-hover: #2a2a2a;
-  --font-family-display: "Syne", sans-serif;
-  --font-family-body: "DM Sans", sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-body: "DM Sans", sans-serif;
 }
 
 /* Grain overlay */
@@ -172,7 +172,7 @@ html {
 
 /* Prose overrides for MDX content */
 .prose-custom h2 {
-  font-family: var(--font-family-display);
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--color-text-primary);
   font-size: 1.25rem;
