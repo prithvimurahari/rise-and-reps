@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WorkoutCard from "../../components/WorkoutCard.astro";
+import { getCollection } from "astro:content";
+
+const workouts = await getCollection("workouts");
+---
+
+<BaseLayout title="Workouts" description="Browse all workout routines">
+  <section class="px-6 md:px-10 py-16 md:py-24">
+    <div class="max-w-7xl mx-auto">
+      <div class="mb-14 animate-fade-up">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-text-muted mb-3">Training Programs</p>
+        <h1 class="font-display text-4xl md:text-6xl font-800 tracking-tight mb-3">Workouts</h1>
+        <div class="h-px bg-accent w-16 animate-reveal-line delay-2"></div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border animate-fade-up delay-3">
+        {workouts.map((workout) => (
+          <WorkoutCard
+            title={workout.data.title}
+            category={workout.data.category}
+            targetMuscles={workout.data.targetMuscles}
+            difficulty={workout.data.difficulty}
+            duration={workout.data.duration}
+            slug={workout.id}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -3,7 +3,24 @@ const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-border mt-auto">
-  <div class="max-w-6xl mx-auto px-4 py-8 text-center text-text-secondary text-sm">
-    <p>&copy; {year} Rise & Reps. Built for gains.</p>
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-12">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div>
+        <p class="font-display font-800 text-lg text-text-primary tracking-tight">
+          PRITHVI<span class="text-accent">.</span>
+        </p>
+        <p class="text-text-muted text-xs mt-1 tracking-wide">Rise & Reps — Personal Training Log</p>
+      </div>
+
+      <div class="flex gap-8">
+        <a href="/workouts" class="text-[11px] tracking-[0.2em] uppercase text-text-muted hover:text-accent transition-colors duration-300">Workouts</a>
+        <a href="/diets" class="text-[11px] tracking-[0.2em] uppercase text-text-muted hover:text-accent transition-colors duration-300">Diet</a>
+        <a href="/about" class="text-[11px] tracking-[0.2em] uppercase text-text-muted hover:text-accent transition-colors duration-300">About</a>
+      </div>
+    </div>
+
+    <div class="h-px bg-border mt-8 mb-6"></div>
+
+    <p class="text-text-muted text-[11px] tracking-wide">&copy; {year} Prithvi. All rights reserved.</p>
   </div>
 </footer>

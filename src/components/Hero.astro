@@ -1,0 +1,94 @@
+---
+
+---
+
+<section class="relative min-h-[100svh] flex flex-col justify-center overflow-hidden px-6 md:px-10">
+  {/* Background layers */}
+  <div class="absolute inset-0 bg-gradient-to-b from-accent/[0.04] via-accent/[0.01] to-transparent pointer-events-none"></div>
+  <div class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-bg-primary to-transparent pointer-events-none"></div>
+
+  {/* Subtle glow */}
+  <div class="absolute top-1/3 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-accent/[0.05] rounded-full blur-[120px] pointer-events-none animate-fade-in delay-5"></div>
+
+  <div class="max-w-7xl mx-auto w-full relative">
+    {/* Personal label */}
+    <div class="animate-fade-up mb-8">
+      <div class="flex items-center gap-4">
+        <div class="w-8 h-px bg-accent"></div>
+        <p class="text-[11px] font-medium tracking-[0.3em] uppercase text-accent">Prithvi's Fitness Log</p>
+      </div>
+    </div>
+
+    {/* Main title — Rise & Reps is the star */}
+    <div class="animate-fade-up delay-1 mb-3">
+      <h1 class="font-display font-800 text-[clamp(3.5rem,13vw,10rem)] leading-[0.85] tracking-[-0.04em] text-text-primary">
+        Rise <span class="text-accent">&</span> Reps
+      </h1>
+    </div>
+
+    {/* Personal tagline */}
+    <div class="animate-fade-up delay-2 mb-4">
+      <p class="font-display text-lg md:text-xl font-500 tracking-tight text-text-secondary">
+        by <span class="text-text-primary font-600">Prithvi</span> — my personal workout & diet tracker
+      </p>
+    </div>
+
+    {/* Accent line */}
+    <div class="h-px bg-gradient-to-r from-accent via-accent/40 to-transparent max-w-sm animate-reveal-line delay-3 mb-10"></div>
+
+    {/* Description */}
+    <div class="animate-fade-up delay-4 mb-14">
+      <p class="text-text-secondary text-base md:text-lg leading-relaxed max-w-lg">
+        6 days of structured training, every rep logged. Diet plans with macros and meals charted out. Built to keep me accountable.
+      </p>
+    </div>
+
+    {/* Stats + CTAs row */}
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-end">
+      {/* Stats */}
+      <div class="md:col-span-5 animate-fade-up delay-5">
+        <div class="flex gap-10">
+          <div>
+            <p class="font-display text-4xl font-800 text-text-primary">6</p>
+            <p class="text-[10px] tracking-[0.2em] uppercase text-text-muted mt-1">Training Days</p>
+          </div>
+          <div>
+            <p class="font-display text-4xl font-800 text-text-primary">36</p>
+            <p class="text-[10px] tracking-[0.2em] uppercase text-text-muted mt-1">Exercises</p>
+          </div>
+          <div>
+            <p class="font-display text-4xl font-800 text-text-primary">2</p>
+            <p class="text-[10px] tracking-[0.2em] uppercase text-text-muted mt-1">Diet Plans</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Spacer */}
+      <div class="hidden md:block md:col-span-4"></div>
+
+      {/* CTAs */}
+      <div class="md:col-span-3 flex flex-col gap-3 animate-fade-up delay-6">
+        <a
+          href="/workouts"
+          class="group flex items-center justify-between px-6 py-4 bg-accent text-bg-primary font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:bg-accent-hover"
+        >
+          My Workouts
+          <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </a>
+        <a
+          href="/diets"
+          class="group flex items-center justify-between px-6 py-4 border border-border text-text-primary font-semibold text-sm tracking-wide uppercase transition-all duration-300 hover:border-accent hover:text-accent"
+        >
+          My Diet Plans
+          <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
+        </a>
+      </div>
+    </div>
+
+    {/* Scroll indicator */}
+    <div class="hidden md:flex items-center gap-3 mt-20 animate-fade-in delay-7">
+      <div class="w-px h-10 bg-gradient-to-b from-accent to-transparent"></div>
+      <p class="text-[10px] tracking-[0.2em] uppercase text-text-muted">Scroll to explore</p>
+    </div>
+  </div>
+</section>

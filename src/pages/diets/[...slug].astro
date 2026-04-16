@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import MacroBar from "../../components/MacroBar.astro";
+import MealList from "../../components/MealList.astro";
+import Badge from "../../components/Badge.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const diets = await getCollection("diets");
+  return diets.map((diet) => ({
+    params: { slug: diet.id },
+    props: { diet },
+  }));
+}
+
+const { diet } = Astro.props;
+const { Content } = await render(diet);
+const { title, goal, calories, macros, meals } = diet.data;
+---
+
+<BaseLayout title={title} description={`${title} - ${calories} calories, ${goal.replace("-", " ")} plan`}>
+  <article class="px-6 md:px-10 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <a href="/diets" class="group text-[11px] tracking-[0.2em] uppercase text-text-muted hover:text-accent transition-colors duration-300 flex items-center gap-2 mb-10 animate-fade-in">
+        <span class="group-hover:-translate-x-1 transition-transform duration-300">←</span>
+        All Diets
+      </a>
+
+      <div class="animate-fade-up">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-text-muted mb-3">{goal.replace("-", " ")} · {calories} cal/day</p>
+        <h1 class="font-display text-4xl md:text-5xl font-800 tracking-tight mb-6">{title}</h1>
+
+        <div class="flex flex-wrap gap-2 mb-10">
+          <Badge label={goal.replace("-", " ")} variant="accent" />
+          <Badge label={`${calories} cal/day`} />
+        </div>
+      </div>
+
+      <div class="mb-12 animate-fade-up delay-2">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-text-muted mb-5">Macro Breakdown</p>
+        <MacroBar protein={macros.protein} carbs={macros.carbs} fat={macros.fat} />
+      </div>
+
+      <div class="h-px bg-border my-12"></div>
+
+      <div class="mb-12 animate-fade-up delay-3">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-text-muted mb-5">Daily Meals — {meals.length} total</p>
+        <MealList meals={meals} />
+      </div>
+
+      <div class="h-px bg-border my-12 animate-reveal-line delay-4"></div>
+
+      <div class="prose-custom animate-fade-up delay-5">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

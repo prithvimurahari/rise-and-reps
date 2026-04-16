@@ -9,53 +9,58 @@ const navLinks = [
 ];
 ---
 
-<header class="sticky top-0 z-50 bg-bg-primary/80 backdrop-blur-md border-b border-border">
-  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="text-xl font-extrabold tracking-tight text-accent">
-      Rise & Reps
+<header class="fixed top-0 left-0 right-0 z-50 bg-bg-primary/60 backdrop-blur-xl border-b border-border/50">
+  <nav class="max-w-7xl mx-auto px-6 md:px-10 h-16 flex items-center justify-between">
+    <a href="/" class="font-display text-lg font-800 tracking-tight text-text-primary hover:text-accent transition-colors duration-300">
+      PRITHVI<span class="text-accent">.</span>
     </a>
 
     {/* Desktop nav */}
-    <ul class="hidden md:flex gap-8">
+    <ul class="hidden md:flex gap-10">
       {navLinks.map((link) => (
         <li>
           <a
             href={link.href}
             class:list={[
-              "text-sm font-medium transition-colors hover:text-accent",
-              currentPath === link.href ? "text-accent" : "text-text-secondary",
+              "text-[13px] font-medium tracking-widest uppercase transition-colors duration-300 hover:text-accent relative",
+              currentPath === link.href
+                ? "text-accent"
+                : "text-text-secondary",
             ]}
           >
             {link.label}
+            {currentPath === link.href && (
+              <span class="absolute -bottom-1 left-0 w-full h-px bg-accent"></span>
+            )}
           </a>
         </li>
       ))}
     </ul>
 
-    {/* Mobile hamburger button */}
+    {/* Mobile hamburger */}
     <button
       id="mobile-menu-btn"
-      class="md:hidden text-text-secondary hover:text-accent transition-colors"
+      class="md:hidden text-text-secondary hover:text-accent transition-colors w-8 h-8 flex flex-col items-end justify-center gap-1.5"
       aria-label="Toggle menu"
     >
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
+      <span id="bar-1" class="block w-6 h-px bg-current transition-all duration-300"></span>
+      <span id="bar-2" class="block w-4 h-px bg-current transition-all duration-300"></span>
     </button>
   </nav>
 
   {/* Mobile menu */}
-  <div id="mobile-menu" class="hidden md:hidden border-t border-border">
-    <ul class="px-4 py-4 space-y-3">
-      {navLinks.map((link) => (
+  <div id="mobile-menu" class="hidden md:hidden border-t border-border/50 bg-bg-primary/95 backdrop-blur-xl">
+    <ul class="px-6 py-8 space-y-6">
+      {navLinks.map((link, i) => (
         <li>
           <a
             href={link.href}
             class:list={[
-              "block text-sm font-medium transition-colors hover:text-accent",
+              "block text-2xl font-display font-700 tracking-tight transition-colors duration-300 hover:text-accent",
               currentPath === link.href ? "text-accent" : "text-text-secondary",
             ]}
           >
+            <span class="text-text-muted text-sm font-body mr-3">0{i + 1}</span>
             {link.label}
           </a>
         </li>
@@ -64,8 +69,23 @@ const navLinks = [
   </div>
 </header>
 
+{/* Spacer for fixed header */}
+<div class="h-16"></div>
+
 <script>
-  document.getElementById("mobile-menu-btn")?.addEventListener("click", () => {
-    document.getElementById("mobile-menu")?.classList.toggle("hidden");
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const bar1 = document.getElementById("bar-1");
+  const bar2 = document.getElementById("bar-2");
+
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+    const isOpen = !menu?.classList.contains("hidden");
+    if (bar1 && bar2) {
+      bar1.style.transform = isOpen ? "rotate(45deg) translateY(4px)" : "";
+      bar1.style.width = isOpen ? "1.5rem" : "1.5rem";
+      bar2.style.transform = isOpen ? "rotate(-45deg) translateY(-3px)" : "";
+      bar2.style.width = isOpen ? "1.5rem" : "1rem";
+    }
   });
 </script>

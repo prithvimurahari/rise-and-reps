@@ -1,0 +1,19 @@
+---
+interface Props {
+  size?: string;
+  color?: string;
+}
+
+const { size = "12px", color = "var(--color-accent)" } = Astro.props;
+---
+
+<div class="absolute inset-0 pointer-events-none" aria-hidden="true">
+  {/* Top-left */}
+  <span class="absolute top-0 left-0 opacity-30" style={`width: ${size}; height: ${size}; border-top: 1.5px solid ${color}; border-left: 1.5px solid ${color};`}></span>
+  {/* Top-right */}
+  <span class="absolute top-0 right-0 opacity-30" style={`width: ${size}; height: ${size}; border-top: 1.5px solid ${color}; border-right: 1.5px solid ${color};`}></span>
+  {/* Bottom-left */}
+  <span class="absolute bottom-0 left-0 opacity-30" style={`width: ${size}; height: ${size}; border-bottom: 1.5px solid ${color}; border-left: 1.5px solid ${color};`}></span>
+  {/* Bottom-right */}
+  <span class="absolute bottom-0 right-0 opacity-30" style={`width: ${size}; height: ${size}; border-bottom: 1.5px solid ${color}; border-right: 1.5px solid ${color};`}></span>
+</div>

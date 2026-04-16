@@ -9,10 +9,10 @@ const { label, variant = "default" } = Astro.props;
 
 <span
   class:list={[
-    "inline-block px-2.5 py-0.5 text-xs font-medium rounded-full",
+    "inline-block px-3 py-1 text-[10px] font-semibold tracking-[0.15em] uppercase",
     variant === "accent"
-      ? "bg-accent/15 text-accent"
-      : "bg-border text-text-secondary",
+      ? "bg-accent/10 text-accent border border-accent/20"
+      : "bg-border/50 text-text-secondary border border-border",
   ]}
 >
   {label}

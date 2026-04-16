@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ExerciseTable from "../../components/ExerciseTable.astro";
+import Badge from "../../components/Badge.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const workouts = await getCollection("workouts");
+  return workouts.map((workout) => ({
+    params: { slug: workout.id },
+    props: { workout },
+  }));
+}
+
+const { workout } = Astro.props;
+const { Content } = await render(workout);
+const { title, category, targetMuscles, difficulty, duration, exercises } = workout.data;
+---
+
+<BaseLayout title={title} description={`${title} - ${category} workout targeting ${targetMuscles.join(", ")}`}>
+  <article class="px-6 md:px-10 py-16 md:py-24">
+    <div class="max-w-3xl mx-auto">
+      <a href="/workouts" class="group text-[11px] tracking-[0.2em] uppercase text-text-muted hover:text-accent transition-colors duration-300 flex items-center gap-2 mb-10 animate-fade-in">
+        <span class="group-hover:-translate-x-1 transition-transform duration-300">←</span>
+        All Workouts
+      </a>
+
+      <div class="animate-fade-up">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-text-muted mb-3">{category} · {duration}</p>
+        <h1 class="font-display text-4xl md:text-5xl font-800 tracking-tight mb-6">{title}</h1>
+
+        <div class="flex flex-wrap gap-2 mb-10">
+          <Badge label={difficulty} variant="accent" />
+          {targetMuscles.map((muscle) => (
+            <Badge label={muscle} />
+          ))}
+        </div>
+      </div>
+
+      <div class="mb-12 animate-fade-up delay-2">
+        <p class="text-[10px] tracking-[0.3em] uppercase text-text-muted mb-5">Exercises — {exercises.length} total</p>
+        <ExerciseTable exercises={exercises} />
+      </div>
+
+      <div class="h-px bg-border my-12 animate-reveal-line delay-3"></div>
+
+      <div class="prose-custom animate-fade-up delay-4">
+        <Content />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

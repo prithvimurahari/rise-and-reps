@@ -9,7 +9,7 @@ interface Props {
   description?: string;
 }
 
-const { title, description = "Personal workout routines and diet plans" } = Astro.props;
+const { title, description = "Prithvi's personal workout routines and diet plans" } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,11 +21,11 @@ const { title, description = "Personal workout routines and diet plans" } = Astr
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <title>{title} | Rise & Reps</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title} — PRITHVI</title>
     <ViewTransitions />
   </head>
-  <body class="bg-bg-primary text-text-primary font-sans min-h-screen flex flex-col">
+  <body class="bg-bg-primary text-text-primary font-body min-h-screen flex flex-col antialiased">
     <Header />
     <main class="flex-1">
       <slot />
